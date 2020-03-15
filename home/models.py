@@ -18,7 +18,7 @@ class Photo(models.Model):
     upload_url = models.CharField(max_length=200)
 
     # Photo information
-    title = models.CharField(blank=True, null=True)
+    title = models.CharField(blank=True, null=True, max_length=100)
     caption = models.TextField(blank=True, null=True)
     date_taken = models.DateTimeField(blank=True, null=True)
 
