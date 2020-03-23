@@ -12,6 +12,12 @@ class Project(models.Model):
         self.last_updated = timezone.now()
         super().save()
 
+    def __repr__(self):
+        return self.name
+    
+    def __str__(self):
+        return f'{self.name} - {self.year}'
+
 
 class Photo(models.Model):
     name = models.CharField(max_length=50)
@@ -25,6 +31,14 @@ class Photo(models.Model):
     date_added = models.DateTimeField(default=timezone.now)
     last_updated = models.DateTimeField(default=timezone.now)
 
+    project = models.ForeignKey('Project', on_delete=models.CASCADE)
+
     def save(self):
         self.last_updated = timezone.now()
         super().save()
+
+    def __repr__(self):
+        return self.name
+    
+    def __str__(self):
+        return f'{self.name} - {self.last_updated}'
