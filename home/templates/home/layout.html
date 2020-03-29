@@ -37,7 +37,7 @@
           <div class="projects">
             <ul class="project-name">
               {% for project in projects %}
-                <a href="{% url 'view_project' project.name %}" class="project-links">{{ project.project }}</a><br>
+                <a href="{% url 'view_project' project.slug %}" class="project-links">{{ project.name }}</a><br>
               {% endfor %}
             </ul>
           </div>
@@ -47,54 +47,27 @@
           <span id="trigger">Project List</span>
           <div class="projects" style='display: none'>
             <ul class="project-name">
-              {% for project in projects.query.all() %}
-                <a href="{{ url_for('display_project', title=project.project) }}" class="project-links">{{ project.project }}</a><br>
-                <hr>
+              {% for project in projects %}
+                <a href="{% url 'view_project' project.slug %}" class="project-links">{{ project.name }}</a><br>
               {% endfor %}
             </ul>
           </div>
         </div>
 
-        <a class="site-links" href="{{ url_for('about') }}">About</a>
-        <a class="site-links" href="{{ url_for('contact') }}">Contact</a>
+        <a class="site-links" href="{% url 'about' %}">About</a>
+        <a class="site-links" href="{% url 'contact' %}">Contact</a>
         <div class="icons">
           <a href="https://www.instagram.com/nazyraouf/" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
-        {% if current_user.is_authenticated %}
-          <div class="admin-tools full">
-            <a class="admin-links" href="{{ url_for('reg') }}"><i class="far fa-user"></i></a>
-            <a class="admin-links" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i></a>
-            <a class="admin-links" href="{{ url_for('add_project') }}"><i class="fas fa-project-diagram"></i></a>
-            <a class="admin-links" href="{{ url_for('add_photo') }}"><i class="fas fa-camera"></i></a>
-          </div>
-        {% endif %}
         <div class="notes">
           <span class="cp">
-          <p class="footer-text"> Nazy Raouf &nbsp;&nbsp;<i class="far fa-copyright"></i>&nbsp;&nbsp; 2019.</p>
+          <p class="footer-text"> Nazy Raouf &nbsp;&nbsp;<i class="far fa-copyright"></i>&nbsp;&nbsp; 2020.</p>
         </span>
         </div>
       </div>
     </nav>
 
-    {% if current_user.is_authenticated %}
-      <div class="admin-tools mobile">
-        <a class="admin-links" href="{{ url_for('reg') }}"><i class="far fa-user"></i></a>
-        <a class="admin-links" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i></a>
-        <a class="admin-links" href="{{ url_for('add_project') }}"><i class="fas fa-project-diagram"></i></a>
-        <a class="admin-links" href="{{ url_for('add_photo') }}"><i class="fas fa-camera"></i></a>
-      </div>
-    {% endif %}
-
     <main class="content-container">
-      {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-          {% for category, message in messages %}
-            <div class="msg {{ category }}">
-              {{ message }}
-            </div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
       {% block main %}
       {% endblock %}
     </main>
