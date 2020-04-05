@@ -35,7 +35,7 @@ class ManageActiveMixin:
 class ProjectAdmin(ManageActiveMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ['name', 'year', 'active'],
+            'fields': ['name', 'year', 'active', 'slug'],
         }),
         ('Meta', {
             'fields': ['date_added', 'last_updated'],

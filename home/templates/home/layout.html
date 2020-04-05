@@ -37,7 +37,7 @@
           <div class="projects">
             <ul class="project-name">
               {% for project in projects %}
-                <a href="{% url 'view_project' project.slug %}" class="project-links">{{ project.name }}</a><br>
+                <a href="{% url 'view_project' slug=project.slug %}" class="project-links">{{ project.name }}</a><br>
               {% endfor %}
             </ul>
           </div>
@@ -48,7 +48,7 @@
           <div class="projects" style='display: none'>
             <ul class="project-name">
               {% for project in projects %}
-                <a href="{% url 'view_project' project.slug %}" class="project-links">{{ project.name }}</a><br>
+                <a href="{% url 'view_project' slug=project.slug %}" class="project-links">{{ project.name }}</a><br>
               {% endfor %}
             </ul>
           </div>
