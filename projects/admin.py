@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from projects import models
+from projects import models as project_models
 
 
 class ManageActiveMixin:
@@ -62,5 +62,5 @@ class PhotoAdmin(ManageActiveMixin, admin.ModelAdmin):
     list_filter = ['project__year']
 
 
-admin.site.register(models.Project, ProjectAdmin)
-admin.site.register(models.Photo, PhotoAdmin)
+admin.site.register(project_models.Project, ProjectAdmin)
+admin.site.register(project_models.Photo, PhotoAdmin)
