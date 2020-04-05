@@ -6,6 +6,8 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     slug = models.CharField(max_length=30)
 
+    description = models.TextField(blank=True, null=True)
+
     year = models.IntegerField(null=True, blank=True)
     date_added = models.DateTimeField(default=timezone.now)
     last_updated = models.DateTimeField(default=timezone.now)
