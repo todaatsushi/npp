@@ -1,0 +1,149 @@
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+  @media (max-width: 950px) {
+  
+    .full {
+      display: none;
+    }
+  
+    /* PAGE */
+    .all {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+    }
+  
+    /* SIDE NAV */
+    .side-nav {
+      background-color: white;
+      position: fixed;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1.5px solid #cecece;
+      min-height: 0.75in;
+      z-index: 1;
+    }
+  
+    /* MENU LINKS */
+    .site-links a {
+      margin-bottom: 1000%;
+    }
+  
+    h3 {
+      margin: 0;
+    }
+  
+    .site-links:link, .site-links:visited, .site-links:hover {
+      text-decoration: none;
+      color: #3a3a3a;
+    }
+  
+    /* NAV TEXT / OPTIONS */
+    .options {
+      display: flex;
+      height: 75%;
+      width: 95%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px;
+    }
+  
+    /* HIDDEN PROJECTS (TOGGLEABLE) */
+  
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+  
+    .projects {
+      position: fixed;
+      top: 0.6in;
+      background-color: white;
+      padding: 10px;
+    }
+  
+    /* PROJECT OPTION LINKS */
+    .project-links:hover, .project-links:visited, .project-links:link {
+      text-decoration: none;
+      color: #3a3a3a;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .project-name {
+      padding-left: 5px;
+      padding-top: 5px;
+    }
+  
+    .content-container {
+      margin-top: 0.75in;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      min-height: 6in;
+      height: 100%;
+      width: 100%;
+    }
+    /* OTHER OPTIONS */
+  
+    /* MENU LINKS */
+  
+    .site-links:link, .site-links:visited, .site-links:hover {
+      text-decoration: none;
+      color: #3a3a3a;
+    }
+  
+    #trigger:hover {
+      cursor: pointer;
+    }
+  
+    /* SOCIAL ICONS */
+    .icons {
+      margin: 3% 0;
+    }
+  
+    i {
+      color: #3a3a3a;
+    }
+  
+    /* COPYRIGHT / CREDIT */
+  
+    .cp {
+      font-size: 0.8em;
+    }
+  
+    .edit {
+      margin: 5px;
+    }
+  
+    .del {
+      margin: 5px;
+    }
+  
+    .notes {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+    }
+  
+    /* API ACCESS */
+    .admin-tools.mobile {
+      font-size: 1.2em;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 20%
+    }
+  
+  }
+  
