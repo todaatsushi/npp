@@ -5,11 +5,6 @@ from django.utils import timezone
 
 from home.models import ContactSettings
 
-TOPICS = (
-    ('Business', 'Business Enquiry'),
-    ('Comment', 'Comment'),
-    ('Other', 'Other')
-)
 
 def create_message_body(cleaned_data):
     return '''
@@ -41,8 +36,6 @@ def generate_and_send_mail(data):
 
 
 class ContactForm(forms.Form):
-    topic = forms.ChoiceField(choices=TOPICS)
-
     name = forms.CharField()
     contact_email = forms.EmailField()
 

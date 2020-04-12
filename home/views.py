@@ -3,6 +3,7 @@ from django.views.generic import View
 
 from projects import models
 from home import forms
+from home.models import ContactSettings
 
 
 class Home(View):
@@ -21,7 +22,7 @@ class Contact(View):
         form = forms.ContactForm
         projects = models.Project.objects.filter(active=True)
         return render(request, 'home/contact.html', {
-            'projects': projects, 'form': form
+            'projects': projects, 'form': form, 'settings': ContactSettings.objects.first()
         })
 
     def post(self, request):

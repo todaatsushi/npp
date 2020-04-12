@@ -1,9 +1,63 @@
 {% extends 'home/layout.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'home/full/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'home/mobile/contact.css' %}">
+{% endblock %}
+
+{% block title %}
+    Contact
+{% endblock %}
+
 
 {% block main %}
-    <form action="{% url 'contact' %}" method='POST'>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit">
-    </form>
+    <div class="contact-main flex-column align-center justify-space-around full-width">
+        <div class="contact-top flex-column align-center justify-space-around">
+            <h3>{{ settings.contact_message }}</h3>
+            <ul>
+                {% if settings.on_holiday %}
+                    <li><h5>{{ settings.holiday_message }}</h5></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="contact-bottom">
+            {{ form.non_field_errors }}
+
+            <form action="{% url 'contact' %}" method='POST'>
+                {% csrf_token %}
+                <div class="contact-form-form flex">
+
+                    <div class="contact-form-sub flex-column justify-space-around">
+                        <div class="contact-field">
+                            {{ form.subject.errors }}
+                            <label for="form.top.id_for_label">Subject: </label>
+                            {{ form.subject }}
+                        </div>
+                        <div class="contact-field">
+                            {{ form.name.errors }}
+                            <label for="form.top.id_for_label">Your Name: </label>
+                            {{ form.name }}
+                        </div>
+                        <div class="contact-field">
+                            {{ form.contact_email.errors }}
+                            <label for="form.top.id_for_label">Your Email: </label>
+                            {{ form.contact_email }}
+                        </div>
+                    </div>
+
+                    <div class="contact-form-sub flex-column justify-center">
+                        <div class="contact-field">
+                            {{ form.message.errors }}
+                            <label for="form.top.id_for_label">Message: </label>
+                            {{ form.message }}
+                        </div>
+
+                        <input type="submit" value="Submit">
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
