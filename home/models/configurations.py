@@ -10,10 +10,6 @@ class ContactSettings(models.Model):
         )
     email_password = models.CharField(max_length=100, blank=True, null=True)
 
-    recieve_notifications = models.BooleanField(
-        default=True,
-        help_text='Turn this on to get emails notifying you when someone has contacted you.'
-    )
     on_holiday = models.BooleanField(
         default=False,
         help_text='Set this to True if you will not be replying for a while.'
