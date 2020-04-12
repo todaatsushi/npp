@@ -1,1 +1,20 @@
 {% extends 'home/layout.html' %}
+
+{% block title %}
+    About
+{% endblock %}
+
+
+{% block main %}
+    <div class="about-main flex justify-center align-center">
+        <div class="about-profile flex-column justify-center align-center">
+            {{ settings.profile|linebreaksbr }}
+        </div>
+        <div class="about-me flex-column justify-center align-center">
+            <ul>
+                <li>{{ settings.phone_number }}</li>
+                <li>{{ settings.email_address}}</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

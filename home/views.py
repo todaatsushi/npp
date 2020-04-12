@@ -4,7 +4,7 @@ from django.views.generic import View
 
 from projects import models
 from home import forms
-from home.models import ContactSettings
+from home.models import ContactSettings, AboutSettings
 
 
 class Home(View):
@@ -15,7 +15,7 @@ class Home(View):
 class About(View):
     def get(self, request):
         projects = models.Project.objects.filter(active=True)
-        return render(request, 'home/about.html', {'projects': projects})
+        return render(request, 'home/about.html', {'projects': projects, 'settings': AboutSettings.objects.get()})
 
 
 class Contact(View):
