@@ -23,3 +23,9 @@ class Contact(View):
         return render(request, 'home/contact.html', {
             'projects': projects, 'form': form
         })
+
+    def post(self, request):
+        form = forms.ContactForm(request.POST)
+        if form.is_valid():
+            forms.generate_and_send_mail(form.cleaned_data)
+        return redirect(reverse('contact'))
