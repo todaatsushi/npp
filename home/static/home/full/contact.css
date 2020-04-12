@@ -8,11 +8,10 @@
 }
 
 .contact-form-sub {
-    padding: 0.2cm 1cm;
+    padding: 0 1cm;
 }
 
 input[type=text], input[type=password], input[type=submit], input[type=email], textarea {
-    border-radius: 5px;
     padding: 5px;
     width: 100%;
   }
