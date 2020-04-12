@@ -2,14 +2,6 @@ from django.db import models
 
 
 class ContactSettings(models.Model):
-    email_address = models.EmailField(
-        max_length=100,
-        blank=True,
-        null=True,
-        help_text='This should be the email you would like to recieve notifcations to.'
-        )
-    email_password = models.CharField(max_length=100, blank=True, null=True)
-
     on_holiday = models.BooleanField(
         default=False,
         help_text='Set this to True if you will not be replying for a while.'
@@ -30,9 +22,6 @@ class ContactSettings(models.Model):
 
     def save(self, *args, **kwargs):
         # There can only be one config!
-        if any([
-            self.pk,
-            ContactSettings.objects.count(),
-        ]):
+        if not self.pk and ContactSettings.objects.exists():
             raise Exception('There can only be one Contact configuration!')
         return super().save(*args, **kwargs)

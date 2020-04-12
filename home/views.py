@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.views.generic import View
 
 from projects import models
+from home import forms
 
 
 class Home(View):
@@ -17,5 +18,8 @@ class About(View):
 
 class Contact(View):
     def get(self, request):
+        form = forms.ContactForm
         projects = models.Project.objects.filter(active=True)
-        return render(request, 'home/contact.html', {'projects': projects})
+        return render(request, 'home/contact.html', {
+            'projects': projects, 'form': form
+        })
