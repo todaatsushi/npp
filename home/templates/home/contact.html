@@ -19,6 +19,11 @@
                 {% if settings.on_holiday %}
                     <li><h5>{{ settings.holiday_message }}</h5></li>
                 {% endif %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <li><h5>{{ message }}</h5></li>
+                    {% endfor %}
+                {% endif %}
             </ul>
         </div>
         <div class="contact-bottom">

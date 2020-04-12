@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect, reverse
 from django.views.generic import View
 
@@ -29,4 +30,8 @@ class Contact(View):
         form = forms.ContactForm(request.POST)
         if form.is_valid():
             forms.generate_and_send_mail(form.cleaned_data)
+            messages.success(
+                request,
+                ContactSettings.objects.get().thanks_message
+            )
         return redirect(reverse('contact'))
