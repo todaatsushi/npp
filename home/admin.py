@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from home import models as home_models
-from home.forms import ContactSettingsForm
+from home.forms import ContactSettingsForm, AboutSettingsForm
 
 
 class ContactSettingsAdmin(admin.ModelAdmin):
@@ -16,4 +16,17 @@ class ContactSettingsAdmin(admin.ModelAdmin):
     form = ContactSettingsForm
 
 
+class AboutSettingsAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ('Contact Details', {
+            'fields': ['email_address', 'phone_number']
+        }),
+        ('Infomation', {
+            'fields': ['profile']
+        })
+    )
+    form = AboutSettingsForm
+
+
 admin.site.register(home_models.ContactSettings, ContactSettingsAdmin)
+admin.site.register(home_models.AboutSettings, AboutSettingsAdmin)

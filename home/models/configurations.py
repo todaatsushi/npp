@@ -25,3 +25,18 @@ class ContactSettings(models.Model):
         if not self.pk and ContactSettings.objects.exists():
             raise Exception('There can only be one Contact configuration!')
         return super().save(*args, **kwargs)
+
+
+class AboutSettings(models.Model):
+    profile = models.TextField(blank=True, null=True)
+    phone_number = models.IntegerField(blank=True, null=True)
+    email_address = models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return 'About Configuration'
+
+    def save(self, *args, **kwargs):
+        # There can only be one config!
+        if not self.pk and AboutSettings.objects.exists():
+            raise Exception('There can only be one About configuration!')
+        return super().save(*args, **kwargs)

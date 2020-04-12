@@ -3,7 +3,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.utils import timezone
 
-from home.models import ContactSettings
+from home.models import ContactSettings, AboutSettings
 
 
 def create_message_body(cleaned_data):
@@ -51,8 +51,18 @@ class ContactSettingsForm(forms.ModelForm):
         ]
         widgets = {
             'email_address': forms.EmailInput(),
-            'email_password': forms.PasswordInput(),
         }
 
     def save(self, *args, **kwargs):
         return super().save(*args, **kwargs)
+
+
+class AboutSettingsForm(forms.ModelForm):
+    class Meta:
+        model = AboutSettings
+        fields = [
+            'email_address', 'phone_number', 'profile'
+        ]
+        widgets = {
+            'email_address': forms.EmailInput()
+        }
