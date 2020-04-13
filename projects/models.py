@@ -27,7 +27,11 @@ class Project(models.Model):
 
 class Photo(models.Model):
     name = models.CharField(max_length=50)
-    upload_url = models.CharField(max_length=200)
+    image = models.ImageField(
+        upload_to='images',
+        null=True,
+        blank=True
+    )
 
     # Photo information
     title = models.CharField(blank=True, null=True, max_length=100)
@@ -43,7 +47,7 @@ class Photo(models.Model):
 
     def save(self):
         self.last_updated = timezone.now()
-        super().save()
+        return super().save()
 
     def __repr__(self):
         return self.name

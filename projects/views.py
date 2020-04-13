@@ -11,12 +11,12 @@ class ViewAllProjects(View):
 
 
 class ViewProject(View):
-    def get(self, request):
-        projects = models.Project.objects.filter(active=True)
+    def get(self, request, slug):
+        projects = models.Project.objects.filter(active=True, slug=slug)
         return render(request, 'home/home.html', {'projects': projects})
 
 
 class ViewPhoto(View):
-    def get(self, request):
+    def get(self, request, slug, pk):
         projects = models.Project.objects.filter(active=True)
         return render(request, 'home/home.html', {'projects': projects})

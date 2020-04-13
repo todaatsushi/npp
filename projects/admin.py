@@ -35,7 +35,7 @@ class ManageActiveMixin:
 class ProjectAdmin(ManageActiveMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ['name', 'year', 'active', 'slug'],
+            'fields': ['name', 'year', 'active'],
         }),
         ('Meta', {
             'fields': ['date_added', 'last_updated'],
@@ -49,17 +49,20 @@ class ProjectAdmin(ManageActiveMixin, admin.ModelAdmin):
 class PhotoAdmin(ManageActiveMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ['name', 'upload_url', 'project__name',],
+            'fields': ['name', 'image', ],
         }),
         ('Photo Information', {
-            'fields': ['title', 'caption', 'date_taken',],
+            'fields': ['title', 'caption', 'date_taken', ],
+        }),
+        ('Project Infomation', {
+            'fields': ['project', 'order', ]
         }),
         ('Meta', {
-            'fields': ['date_added', 'last_updated',],
+            'fields': ['date_added', 'last_updated', ],
         })
     )
-    list_display = ['title', 'date_taken', 'last_updated']
-    list_filter = ['project__year']
+    list_display = ['title', 'date_taken', 'last_updated', ]
+    list_filter = ['project__year', 'project__name']
 
 
 admin.site.register(project_models.Project, ProjectAdmin)
