@@ -1,38 +1,11 @@
 from django.contrib import admin
 
+from projects import forms
 from projects import models as project_models
+from projects import utils
 
 
-class ManageActiveMixin:
-
-    actions = ['activate', 'deactivate']
-
-    def activate(self, request, queryset):
-        for instance in queryset:
-            instance.active = True
-            instance.save()
-        self.message_user(
-            request, 'Successfully activated instances.'
-        )
-
-    def deactivate(self, request, queryset):
-        for instance in queryset:
-            instance.active = False
-            instance.save()
-        self.message_user(
-            request, 'Successfully deactivated instances.'
-        )
-
-    activate.short_description = (
-        'Turn on \'active\' of all selected.'
-    )
-
-    deactivate.short_description = (
-        'Turn off \'active\' of all selected.'
-    )
-
-
-class ProjectAdmin(ManageActiveMixin, admin.ModelAdmin):
+class ProjectAdmin(utils.ManageActiveMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ['name', 'year', 'active'],
@@ -42,11 +15,12 @@ class ProjectAdmin(ManageActiveMixin, admin.ModelAdmin):
         })
     )
     list_display = ['name', 'year', 'date_added', 'last_updated', 'active']
-    list_filter = ['year']
+    list_filter = ['year', 'active']
+    form = forms.ProjectForm
 
 
 
-class PhotoAdmin(ManageActiveMixin, admin.ModelAdmin):
+class PhotoAdmin(utils.ManageActiveMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ['name', 'image', ],
@@ -63,6 +37,8 @@ class PhotoAdmin(ManageActiveMixin, admin.ModelAdmin):
     )
     list_display = ['title', 'date_taken', 'last_updated', ]
     list_filter = ['project__year', 'project__name']
+
+    form = forms.PhotoForm
 
 
 admin.site.register(project_models.Project, ProjectAdmin)

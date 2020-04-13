@@ -42,7 +42,9 @@ class Photo(models.Model):
     date_added = models.DateTimeField(default=timezone.now)
     last_updated = models.DateTimeField(default=timezone.now)
 
-    project = models.ForeignKey('Project', on_delete=models.CASCADE)
+    project = models.ForeignKey(
+        'Project', on_delete=models.CASCADE, related_name='photos'
+    )
     active = models.BooleanField(default=False)
 
     def save(self):
