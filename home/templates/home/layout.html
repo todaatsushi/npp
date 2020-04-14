@@ -20,7 +20,8 @@
   <!-- Custom CSS -->
   {% load static %}
 
-  <link rel="stylesheet" href="{% static 'home/all.css' %}">
+  <link rel="stylesheet" href="{% static 'home/desktop/all.css' %}">
+  <link rel="stylesheet" href="{% static 'home/mobile/all.css' %}">
   <link rel="stylesheet" href="{% static 'home/utils.css' %}">
   {% block style %}
   {% endblock %}
@@ -78,7 +79,7 @@
     </main>
   </div>
 
-  <script type="text/javascript" src="{% static 'home/all.js' %}"></script>
+  <script type="text/javascript" src="{% static 'home/javascript/all.js' %}"></script>
   {% block js %}
   {% endblock js%}
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
