@@ -1,0 +1,17 @@
+.contact-main {
+    height: 80%;
+}
+
+.contact-field {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.contact-form-sub {
+    padding: 0 1cm;
+}
+
+input[type=text], input[type=password], input[type=submit], input[type=email], textarea {
+    padding: 5px;
+    width: 100%;
+  }
