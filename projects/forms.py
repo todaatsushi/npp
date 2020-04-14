@@ -38,10 +38,4 @@ class PhotoForm(forms.ModelForm):
         if not self.cleaned_data['image']:
             raise forms.ValidationError('Image cannot be empty')
 
-        # Validate order
-        project = models.Project.objects.get(id=self.cleaned_data['project'].id)
-        other_photos = project.photos
-        if other_photos.filter(order=self.cleaned_data['order']):
-            raise forms.ValidationError('Photo in that order position already exists.')
-
         return super().save(*args, **kwargs)
