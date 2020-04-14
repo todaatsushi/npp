@@ -4,6 +4,7 @@
 .vscode/
 .env
 npp/media/images/
+npp/static/
 
 # Icon must end with two \r
 Icon
