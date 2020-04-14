@@ -13,7 +13,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DEBUG') == 'True')
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'nazyraouf.pythonanywhere.com']
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
