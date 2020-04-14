@@ -1,2 +1,24 @@
 {% extends 'home/layout.html' %}
 
+{% load static %}
+
+{% block title %}
+    Projects
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'home/full/all_projects.css' %}">
+{% endblock %}
+
+
+{% block main %}
+    <div class="gallery">
+        {% for project in projects %}
+            <figure class="project">
+                <a href="{% url 'view_project' slug=project.slug %}">
+                    <img class="project-img" src="{{ project.photos.first.image.url }}">
+                </a>
+            </figure>
+        {% endfor %}
+    </div>
+{% endblock %}
