@@ -20,7 +20,7 @@ class ProjectForm(forms.ModelForm):
             models.Project.objects.filter(slug=slug)
         )
         if unique_slug_flag:
-            raise ValidationError('Project slug must be unique - have you reused the project name?')
+            raise forms.ValidationError('Project slug must be unique - have you reused the project name?')
         instance = self.instance
         instance.slug = slug
         instance.save()
@@ -36,7 +36,7 @@ class PhotoForm(forms.ModelForm):
 
     def save(self, *args, **kwargs):
         if not self.cleaned_data['image']:
-            raise ValidationError('Image cannot be empty')
+            raise forms.ValidationError('Image cannot be empty')
 
         # Validate order
         project = models.Project.objects.get(id=self.cleaned_data['project'].id)
