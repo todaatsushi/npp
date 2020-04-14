@@ -1,0 +1,44 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'projects/gallery.css' %}">
+{% endblock %}
+
+{% block title %}
+    {{ project.name }} - Gallery
+{% endblock %}
+
+{% block main %}
+    <div class="page">
+    <div class="main">
+        {% for photo in photos %}
+        <div class="desc hide">
+            <h3> {{ photo.title }} </h3>
+            <p> {{ photo.caption }}</p>
+        </div>
+        {% endfor %}
+        <div class="pics">
+        {% for photo in photos %}
+            <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="image change hide">
+        {% endfor %}
+        <div class="pic-controls">
+            <div class="buttons">
+            <button class="gallery-control" id="gallery-back"'><i class="fas fa-chevron-left"></i></button>
+            <button class="gallery-control" id="gallery-next"'><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <span class="gallery-counter"><span id="picture-index"></span> / {{ total }}</span>
+        </div>
+        </div>
+    </div>
+    <div class="controls" index="1">
+        <a class="back" href="{% url 'view_project' slug=project.slug %}">Back to <em>{{ project.name }}</em></a>
+    </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static 'projects/gallery-normal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'projects/highlight.js' %}"></script>
+{% endblock %}
+

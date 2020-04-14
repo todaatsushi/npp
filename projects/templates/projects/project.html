@@ -1,0 +1,27 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+
+{% block title %}
+    {{ project.name }}
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'projects/project.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="desc">
+    <h3>{{ project.name }}</h3>
+    <p>{{ project.description|linebreaks }}</p>
+
+    </div>
+    <div class="gallery">
+        {% for photo in project.photos.active %}
+            <a href="{% url 'view_photo' slug=project.slug pk=photo.pk %}">
+                <figure class="project">    
+                    <img class="project-img gallery-link" src="{{ photo.image.url }}" alt="{{ photo.caption }}" n={{photo.order}}>
+                </figure>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

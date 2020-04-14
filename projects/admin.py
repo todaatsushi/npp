@@ -23,7 +23,7 @@ class ProjectAdmin(utils.ManageActiveMixin, admin.ModelAdmin):
 class PhotoAdmin(utils.ManageActiveMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ['name', 'image', ],
+            'fields': ['name', 'image', 'active', ],
         }),
         ('Photo Information', {
             'fields': ['title', 'caption', 'date_taken', ],
@@ -35,8 +35,8 @@ class PhotoAdmin(utils.ManageActiveMixin, admin.ModelAdmin):
             'fields': ['date_added', 'last_updated', ],
         })
     )
-    list_display = ['title', 'date_taken', 'last_updated', 'order', ]
-    list_filter = ['project__year', 'project__name', 'order', ]
+    list_display = ['title', 'date_taken', 'last_updated', 'order', 'active', ]
+    list_filter = ['project__year', 'project__name', 'order', 'active' ]
 
     form = forms.PhotoForm
 

@@ -2,6 +2,20 @@ from django.db import models
 from django.utils import timezone
 
 
+class ActiveObjectsMixin:
+    def active(self):
+        return self.filter(active=True)
+
+
+class ProjectManager(ActiveObjectsMixin, models.Manager):
+    pass
+
+
+class PhotoManager(ActiveObjectsMixin, models.Manager):
+    pass
+
+
+
 class Project(models.Model):
     name = models.CharField(max_length=100)
     slug = models.CharField(max_length=30)
@@ -13,6 +27,8 @@ class Project(models.Model):
     last_updated = models.DateTimeField(default=timezone.now)
 
     active = models.BooleanField(default=False)
+
+    objects = ProjectManager()
 
     def save(self):
         self.last_updated = timezone.now()
@@ -46,6 +62,8 @@ class Photo(models.Model):
         'Project', on_delete=models.CASCADE, related_name='photos'
     )
     active = models.BooleanField(default=False)
+
+    objects = PhotoManager()
 
     def save(self):
         self.last_updated = timezone.now()
