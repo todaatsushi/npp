@@ -29,6 +29,7 @@ class ContactSettings(models.Model):
 
 class AboutSettings(models.Model):
     profile = models.TextField(blank=True, null=True)
+    page_title = models.CharField(max_length=40, default='Profile')
     phone_number = models.IntegerField(blank=True, null=True)
     email_address = models.CharField(max_length=50, blank=True, null=True)
 

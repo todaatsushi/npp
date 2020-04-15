@@ -19,36 +19,48 @@ def create_message_body(cleaned_data):
         cleaned_data.get('name'),
         cleaned_data.get('contact_email'),
         cleaned_data.get('subject'),
-        cleaned_data.get('message')
+        cleaned_data.get('message'),
     )
 
 
 def generate_and_send_mail(data):
     send_mail(
-        'Email from {} - {}'.format(
-            data.get('name'), data.get('subject')
-        ),
+        'Email from {} - {}'.format(data.get('name'), data.get('subject')),
         create_message_body(data),
         settings.EMAIL_HOST_USER,
         [settings.EMAIL_HOST_USER],
-        fail_silently=False
+        fail_silently=False,
     )
 
 
 class ContactForm(forms.Form):
-    name = forms.CharField()
-    contact_email = forms.EmailField()
+    name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Name', 'class': 'contact-form-left'}
+        )
+    )
+    contact_email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={'placeholder': 'Email', 'class': 'contact-form-left'}
+        )
+    )
 
-    subject = forms.CharField()
-    message = forms.CharField(widget=forms.Textarea)
+    subject = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Subject', 'class': 'contact-form-left'}
+        )
+    )
+    message = forms.CharField(
+        widget=forms.Textarea(
+            attrs={'placeholder': 'Your message here', 'class': 'contact-form-right'}
+        )
+    )
 
 
 class ContactSettingsForm(forms.ModelForm):
     class Meta:
         model = ContactSettings
-        fields = [
-            'on_holiday', 'contact_message', 'thanks_message', 'holiday_message'
-        ]
+        fields = ['on_holiday', 'contact_message', 'thanks_message', 'holiday_message']
         widgets = {
             'email_address': forms.EmailInput(),
         }
@@ -60,9 +72,5 @@ class ContactSettingsForm(forms.ModelForm):
 class AboutSettingsForm(forms.ModelForm):
     class Meta:
         model = AboutSettings
-        fields = [
-            'email_address', 'phone_number', 'profile'
-        ]
-        widgets = {
-            'email_address': forms.EmailInput()
-        }
+        fields = ['email_address', 'phone_number', 'profile']
+        widgets = {'email_address': forms.EmailInput()}

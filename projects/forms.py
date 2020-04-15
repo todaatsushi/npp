@@ -16,8 +16,14 @@ class ProjectForm(forms.ModelForm):
             [character for character in slug if any([character.isalnum(), character == '-'])]
         )
         self.cleaned_data['slug'] = slug
+        existing_slug_project = (
+            models.Project.objects.filter(slug=slug).get() if 
+            models.Project.objects.filter(slug=slug).exists() else
+            None
+        )
         unique_slug_flag = bool(
-            models.Project.objects.filter(slug=slug)
+            existing_slug_project.slug == self.cleaned_data['slug'] and
+            not (existing_slug_project.pk) == self.instance.pk
         )
         if unique_slug_flag:
             raise forms.ValidationError('Project slug must be unique - have you reused the project name?')

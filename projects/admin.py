@@ -8,13 +8,13 @@ from projects import utils
 class ProjectAdmin(utils.ManageActiveMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ['name', 'year', 'active'],
+            'fields': ['name', 'year', 'active', 'description', ],
         }),
         ('Meta', {
-            'fields': ['date_added', 'last_updated'],
+            'fields': ['date_added', 'last_updated', ],
         })
     )
-    list_display = ['name', 'year', 'date_added', 'last_updated', 'active']
+    list_display = ['name', 'year', 'date_added', 'last_updated', 'active', ]
     list_filter = ['year', 'active']
     form = forms.ProjectForm
 

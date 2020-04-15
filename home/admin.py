@@ -22,7 +22,7 @@ class AboutSettingsAdmin(admin.ModelAdmin):
             'fields': ['email_address', 'phone_number']
         }),
         ('Infomation', {
-            'fields': ['profile']
+            'fields': ['page_title', 'profile']
         })
     )
     form = AboutSettingsForm

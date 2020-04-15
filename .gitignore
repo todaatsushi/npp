@@ -4,7 +4,7 @@
 .vscode/
 .env
 media/images/
-static/
+/static/
 
 # Icon must end with two \r
 Icon
