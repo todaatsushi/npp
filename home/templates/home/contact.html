@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block style %}
-    <link rel="stylesheet" href="{% static 'home/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'home/desktop/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'home/mobile/contact.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -12,7 +13,7 @@
 
 {% block main %}
     <div class="contact-main flex-column align-center justify-center full-width">
-        <div class="contact-top flex-column align-center justify-space-around">
+        <div class="contact-top full-width flex-column align-center justify-space-around">
             <h3>{{ settings.contact_message }}</h3>
             <ul>
                 {% if settings.on_holiday %}
@@ -25,39 +26,35 @@
                 {% endif %}
             </ul>
         </div>
-        <div class="contact-bottom">
+        <div class="contact-bottom full-width">
             {{ form.non_field_errors }}
 
             <form action="{% url 'contact' %}" method='POST'>
                 {% csrf_token %}
-                <div class="contact-form-form flex">
+                <div class="contact-form-form">
 
-                    <div class="contact-form-sub flex-column justify-space-around">
+                    <div class="contact-form-sub">
                         <div class="contact-field">
                             {{ form.subject.errors }}
-                            <label for="form.top.id_for_label">Subject: </label>
                             {{ form.subject }}
                         </div>
                         <div class="contact-field">
                             {{ form.name.errors }}
-                            <label for="form.top.id_for_label">Your Name: </label>
                             {{ form.name }}
                         </div>
                         <div class="contact-field">
                             {{ form.contact_email.errors }}
-                            <label for="form.top.id_for_label">Your Email: </label>
                             {{ form.contact_email }}
                         </div>
                     </div>
 
-                    <div class="contact-form-sub flex-column justify-center">
+                    <div class="contact-form-sub">
                         <div class="contact-field">
                             {{ form.message.errors }}
-                            <label for="form.top.id_for_label">Message: </label>
                             {{ form.message }}
                         </div>
 
-                        <input type="submit" value="Submit">
+                        <input class="button" type="submit" value="Submit">
                     </div>
 
                 </div>
