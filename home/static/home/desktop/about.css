@@ -1,0 +1,36 @@
+.about-profile::-webkit-scrollbar { 
+    width: 0 !important;
+}
+
+.about-header {
+    margin: 1cm 0;
+}
+
+.about-list {
+    list-style: none;
+    min-height: 3in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-list > li > h3 {
+    margin: 0 0 4mm 0;
+}
+
+.about-list > li {
+    margin: 2mm ;
+}
+
+@media (min-width: 951px) {
+    .about-profile {
+      text-align: justify;
+      max-height: 6in;
+      overflow: scroll;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      max-width: 7in;
+    }
+}

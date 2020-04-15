@@ -1,0 +1,42 @@
+.contact-form-left:focus, .contact-form-right:focus, .button:focus {
+    outline: none;
+}
+
+.contact-form-left, .contact-form-right {
+    padding: 7px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.button {
+    margin-top: 0.2cm;
+    background-color: #fff;
+    border: 1px solid #5a5959;
+    color: #5a5959;
+    border-radius: 5px;
+}
+
+@media (min-width: 951px) {
+    .contact-form-sub {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .contact-top, .contact-bottom {
+        margin: 0.7cm 0;
+    }
+
+    .contact-form-form {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .contact-form-left {
+        width: 2in;
+    }
+
+    .contact-form-right {
+        width: 4in;
+    }
+}

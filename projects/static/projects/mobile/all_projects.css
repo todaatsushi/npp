@@ -1,0 +1,54 @@
+@media (max-width: 950px) {
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(auto, 100px);
+      grid-gap: 10px;
+      justify-content: center;
+    }
+  
+    .gallery-link:hover {
+      cursor: pointer;
+    }
+  
+    .project {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .project-img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  
+    .desc {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .desc p {
+      text-align: justify;
+    }
+  
+    .desc h3 {
+      text-align: center;
+      margin-bottom: 0.7cm;
+    }
+
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .content-container > div {
+      margin-bottom: 0cm;
+    }
+    
+  }
+  
