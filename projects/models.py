@@ -30,9 +30,9 @@ class Project(models.Model):
 
     objects = ProjectManager()
 
-    def save(self, *args, **kwargs):
+    def save(self):
         self.last_updated = timezone.now()
-        super().save(*args, **kwargs)
+        super().save()
 
     def __repr__(self):
         return self.name
