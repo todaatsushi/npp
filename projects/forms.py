@@ -22,7 +22,7 @@ class ProjectForm(forms.ModelForm):
             None
         )
         unique_slug_flag = bool(
-            existing_slug_project.slug == self.cleaned_data['slug'] and
+            existing_slug_project.slug == self.cleaned_data.get('slug', '') and
             not (existing_slug_project.pk) == self.instance.pk
         )
         if unique_slug_flag:
