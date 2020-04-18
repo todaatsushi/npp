@@ -29,7 +29,7 @@ class ProjectForm(forms.ModelForm):
             raise forms.ValidationError('Project slug must be unique - have you reused the project name?')
         instance = self.instance
         instance.slug = slug
-        instance.save()
+        instance.save(*args, **kwargs)
         return super().save(*args, **kwargs)
 
 
